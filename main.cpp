@@ -1,7 +1,13 @@
 #include <iostream>
+#include <ncurses.h>
 using namespace std;
 
-int main(){
-    cout << "Hello\n";
+int main()
+{
+    initscr();
+    printw("Hello World !!!");
+    refresh();
+    getch();
+    endwin();
     return 0;
 }
