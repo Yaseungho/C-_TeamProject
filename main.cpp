@@ -1,24 +1,19 @@
-#include <ncurses.h>
+#include "GameManager.h"
+using namespace std;
 
 int main()
 {
-    initscr();
-    start_color();
-    init_pair(1, COLOR_RED, COLOR_WHITE);
-    box(stdscr, 0, 0);
-    attron(COLOR_PAIR(1));
-    wbkgd(stdscr, COLOR_PAIR(1)); // 윈도우 백그라운드 컬러
-    mvprintw(1,1,"Hello NCURSES!");
-    // 기본 윈도우 내의 서브윈도우 생성
-    WINDOW *win = subwin(stdscr, 5, 60, 10, 10);
-    init_pair(2, COLOR_BLACK, COLOR_BLUE); // 윈도우 백그라운드 컬러
-    box(win, 0, 0);
-    attron(COLOR_PAIR(2));
-    wbkgd(win, COLOR_PAIR(2));
-    mvwprintw(win,1,1, "Hello SubWindow!");
-    refresh();
-    getch();
-    delwin(win);
-    endwin();
+    initscr();     // Curses 모드 시작
+    start_color(); // 컬러 사용 선언
+
+    GameManager *gameManager = GameManager::GetInstance();
+    // GameManager의 Instance 불러오기
+
+    while (!gameManager->gameOver) // 게임오버 될 때 까지 반복
+    {
+        gameManager->Update(); // Update호출
+        usleep(100000);        // 0.1초 대기
+    }
+    endwin();// Curses 모드 종료
     return 0;
 }
