@@ -123,9 +123,13 @@ public:
                     map[i][j] = EMPTY; // 그 외는 빈 공간으로 생성
             }
         }
-        map[HEIGHT / 2][WIDTH / 2] = SNAKE_HEAD;   // 맵의 중앙에 뱀 머리 생성
-        snake.push_front({HEIGHT / 2, WIDTH / 2}); // 뱀 머리를 snake에 추가
-        nowState = UP;
+        map[HEIGHT / 2][WIDTH / 2] = SNAKE_HEAD;       // 맵의 중앙에 뱀 머리 생성
+        map[HEIGHT / 2][WIDTH / 2 - 1] = SNAKE_BODY;   // 그 옆에 뱀 몸통 생성
+        map[HEIGHT / 2][WIDTH / 2 - 2] = SNAKE_BODY;   // 그 옆에 뱀 몸통 생성
+        snake.push_front({HEIGHT / 2, WIDTH / 2 - 2}); // 뱀 몸통을 snake에 추가
+        snake.push_front({HEIGHT / 2, WIDTH / 2 - 1}); // 뱀 몸통을 snake에 추가
+        snake.push_front({HEIGHT / 2, WIDTH / 2});     // 뱀 머리를 snake에 추가
+        nowState = STOP;
     } // 게임의 기본 설정을 해주는 함수
 
     void HandleInput()
@@ -147,6 +151,9 @@ public:
 
     void Update()
     {
+        if (snake.size() < 3)
+            gameOver = true; // 길이가 3보다 작아지면 게임오버
+            
         if (gameOver)
             return; // 게임오버 시 바로 종료
 
