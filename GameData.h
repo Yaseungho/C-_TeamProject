@@ -1,7 +1,7 @@
 #pragma once
 const int WIDTH = 21;
 const int HEIGHT = 21;
-//가로, 세로 크기
+// 가로, 세로 크기
 
 enum State
 {
@@ -23,7 +23,14 @@ enum ObjectType
     POISON_ITEM  // 독 아이템
 }; // 맵의 특정 위치의 상태를 나타내는 열거형
 
-ObjectType map[HEIGHT][WIDTH]; // 구조물이 담긴 2차원 배열
+struct GameData
+{
+public:
+    ObjectType map[HEIGHT][WIDTH]; // 구조물이 담긴 2차원 배열
+    State nowState;                // 현재 스네이크의 상태
+    bool gameOver = false;         // 게임 오버 여부
+    int nowTime = 0;               // Update가 호출된 횟수
+}; // 게임의 현재 진행사항을 나타내는 구조체
 
 typedef struct _pos
 {
@@ -31,3 +38,8 @@ typedef struct _pos
     int x = 0;
 } pos; // x,y좌표 표현을 위한 구조체
 
+class LoopBehavior
+{
+public:
+    virtual void Update() = 0;
+}; // Loop 인터페이스 (해당 클래스를 상속받은 클래스는 Update를 호출 가능해야 함)

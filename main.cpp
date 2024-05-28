@@ -1,4 +1,6 @@
 #include "GameManager.h"
+#include "GameData.h"
+#include <assert.h>
 using namespace std;
 
 int main()
@@ -9,9 +11,9 @@ int main()
     GameManager *gameManager = GameManager::GetInstance();
     // GameManager의 Instance 불러오기
 
-    while (!gameManager->gameOver) // 게임오버 될 때 까지 반복
+    while (!gameManager->isGameOver()) // 게임오버 될 때 까지 반복
     {
-        gameManager->Update(); // Update호출
+        gameManager->Update(); // Update호출 
         usleep(100000);        // 0.1초 대기
     }
     endwin();// Curses 모드 종료
