@@ -1,20 +1,20 @@
 #include "Snake.h"
 
-Snake::Snake(GameData*_data)
+Snake::Snake(GameData *_data)
 {
     data = _data;
-    data->map[HEIGHT / 2][WIDTH / 2] = SNAKE_HEAD;          // 맵의 중앙에 뱀 머리 생성
-    data->map[HEIGHT / 2][WIDTH / 2 - 1] = SNAKE_BODY;      // 그 옆에 뱀 몸통 생성
-    data->map[HEIGHT / 2][WIDTH / 2 - 2] = SNAKE_BODY;      // 그 옆에 뱀 몸통 생성
-    snakePos.push_front({HEIGHT / 2, WIDTH / 2 - 2}); // 뱀 몸통을 snakePos에 추가
-    snakePos.push_front({HEIGHT / 2, WIDTH / 2 - 1}); // 뱀 몸통을 snakePos에 추가
-    snakePos.push_front({HEIGHT / 2, WIDTH / 2});     // 뱀 머리를 snakePos에 추가
+    data->map[HEIGHT / 2][WIDTH / 2] = SNAKE_HEAD;     // 맵의 중앙에 뱀 머리 생성
+    data->map[HEIGHT / 2][WIDTH / 2 - 1] = SNAKE_BODY; // 그 옆에 뱀 몸통 생성
+    data->map[HEIGHT / 2][WIDTH / 2 - 2] = SNAKE_BODY; // 그 옆에 뱀 몸통 생성
+    snakePos.push_front({HEIGHT / 2, WIDTH / 2 - 2});  // 뱀 몸통을 snakePos에 추가
+    snakePos.push_front({HEIGHT / 2, WIDTH / 2 - 1});  // 뱀 몸통을 snakePos에 추가
+    snakePos.push_front({HEIGHT / 2, WIDTH / 2});      // 뱀 머리를 snakePos에 추가
 } // 생성자의 구현부
-
 
 void Snake::Update()
 {
-    if(snakePos.size() < 3) {
+    if (snakePos.size() < 3)
+    {
         data->gameOver = true;
         return;
     } // 길이가 3보다 작으면 게임 오버

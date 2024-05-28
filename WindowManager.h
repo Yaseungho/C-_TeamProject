@@ -6,7 +6,7 @@
 class WindowManager : public LoopBehavior
 {
 private:
-    GameData *data;
+    GameData *data; // 데이터
 
 public:
     WindowManager(GameData *_data); // 생성자를 통해 색상값 초기화

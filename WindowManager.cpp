@@ -1,6 +1,6 @@
 #include "WindowManager.h"
 
-WindowManager::WindowManager(GameData * _data)
+WindowManager::WindowManager(GameData *_data)
 {
     data = _data;
     init_pair(EMPTY, COLOR_WHITE, COLOR_WHITE);
@@ -21,7 +21,7 @@ void WindowManager::Update()
         for (int j = 0; j < WIDTH; j++)
         {
             attron(COLOR_PAIR(data->map[i][j]));  // 해당 위치에 있는 오브젝트에 맞는 색상의 Attribute 사용
-            mvprintw(i, j * 2, "  ");       // 화면에 출력
+            mvprintw(i, j * 2, "  ");             // 화면에 출력
             attroff(COLOR_PAIR(data->map[i][j])); // Attribute 사용 해제
         }
     }

@@ -3,7 +3,7 @@
 InputManager::InputManager(GameData *_data)
 {
     data = _data;
-}
+} // 생성자의 구현부
 
 void InputManager::Update()
 {

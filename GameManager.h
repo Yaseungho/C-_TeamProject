@@ -1,13 +1,11 @@
 #include <ncurses.h>
 #include <unistd.h>
 #include <vector>
-#include <string>
 #include "GameData.h"
 #include "ItemSpawner.h"
 #include "Snake.h"
 #include "InputManager.h"
 #include "WindowManager.h"
-#include <iostream>
 
 class GameManager
 {
@@ -22,7 +20,7 @@ public:
     bool isGameOver()
     {
         return data.gameOver;
-    }
+    } // 게임오버 여부를 반환
 
     static GameManager *GetInstance()
     {

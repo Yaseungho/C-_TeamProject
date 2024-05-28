@@ -1,6 +1,4 @@
 #include "GameManager.h"
-#include "GameData.h"
-#include <assert.h>
 using namespace std;
 
 int main()

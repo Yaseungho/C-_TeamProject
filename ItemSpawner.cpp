@@ -3,7 +3,7 @@
 ItemSpawner::ItemSpawner(GameData *_data)
 {
     data = _data;
-}
+} // 생성자의 구현부
 
 void ItemSpawner::SpawnItem(ObjectType itemType)
 {
